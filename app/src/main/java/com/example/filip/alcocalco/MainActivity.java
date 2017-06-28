@@ -53,9 +53,7 @@ public class MainActivity extends AppCompatActivity
         list.setOnItemClickListener(clickHandler);
 
 
-
     }
-
 
 
 }

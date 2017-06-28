@@ -11,90 +11,97 @@
         android:id="@+id/Price1"
         android:layout_width="128dp"
         android:layout_height="50dp"
+        android:layout_marginRight="16dp"
+        android:digits="0123456789,."
         android:inputType="numberDecimal"
         app:layout_constraintBaseline_toBaselineOf="@+id/Price2"
-        app:layout_constraintRight_toLeftOf="@+id/Price2"
-        android:digits="0123456789,."
-        android:layout_marginRight="16dp"/>
+        app:layout_constraintRight_toLeftOf="@+id/Price2"/>
 
     <EditText
         android:id="@+id/Volume1"
         android:layout_width="128dp"
         android:layout_height="50dp"
-        android:inputType="numberDecimal"
-        app:layout_constraintRight_toLeftOf="@+id/Volume2"
         android:layout_marginRight="16dp"
         android:digits="0123456789,."
-        app:layout_constraintBaseline_toBaselineOf="@+id/Volume2"/>
+        android:inputType="numberDecimal"
+        app:layout_constraintBaseline_toBaselineOf="@+id/Volume2"
+        app:layout_constraintRight_toLeftOf="@+id/Volume2"/>
+
     <EditText
         android:id="@+id/Alc1"
         android:layout_width="128dp"
         android:layout_height="50dp"
-        android:inputType="numberDecimal"
-        app:layout_constraintRight_toLeftOf="@+id/Alc2"
         android:layout_marginRight="16dp"
         android:digits="0123456789,."
-        app:layout_constraintBaseline_toBaselineOf="@+id/Alc2"/>
+        android:inputType="numberDecimal"
+        app:layout_constraintBaseline_toBaselineOf="@+id/Alc2"
+        app:layout_constraintRight_toLeftOf="@+id/Alc2"/>
+
     <EditText
         android:id="@+id/Price2"
         android:layout_width="128dp"
         android:layout_height="50dp"
-        android:inputType="numberDecimal"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="16dp"
         android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
         android:digits="0123456789,."
-        app:layout_constraintRight_toRightOf="parent"/>
+        android:inputType="numberDecimal"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
     <EditText
         android:id="@+id/Volume2"
         android:layout_width="128dp"
         android:layout_height="50dp"
-        android:inputType="numberDecimal"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/Price2"
         android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
         android:digits="0123456789,."
-        app:layout_constraintRight_toRightOf="parent"/>
+        android:inputType="numberDecimal"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Price2"/>
+
     <EditText
         android:id="@+id/Alc2"
         android:layout_width="128dp"
         android:layout_height="50dp"
-        android:inputType="numberDecimal"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/Volume2"
         android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
         android:digits="0123456789,."
-        app:layout_constraintRight_toRightOf="parent"/>
+        android:inputType="numberDecimal"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Volume2"/>
+
     <TextView
-        android:text="@string/price_label"
+        android:id="@+id/pricelabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBaseline_toBaselineOf="@+id/Price1"
-        android:id="@+id/pricelabel"
         android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/price_label"
+        app:layout_constraintBaseline_toBaselineOf="@+id/Price1"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/Price1"
-        android:layout_marginRight="16dp"/>
+        app:layout_constraintRight_toLeftOf="@+id/Price1"/>
+
     <TextView
         android:id="@+id/volumelabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:text="@string/volume_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         app:layout_constraintBaseline_toBaselineOf="@+id/Volume1"
-        android:layout_marginLeft="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/Volume1"
-        android:layout_marginRight="16dp"/>
+        app:layout_constraintRight_toLeftOf="@+id/Volume1"/>
+
     <TextView
-        android:text="@string/alc_label"
+        android:id="@+id/alcid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/alcid"
-        app:layout_constraintBaseline_toBaselineOf="@+id/Alc1"
         android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/alc_label"
+        app:layout_constraintBaseline_toBaselineOf="@+id/Alc1"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/Alc1"
-        android:layout_marginRight="16dp"/>
+        app:layout_constraintRight_toLeftOf="@+id/Alc1"/>
 
 
     <TextView
@@ -102,34 +109,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:autoSizeTextType="uniform"
         android:text="@string/better"
         android:textAlignment="center"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/Calculate"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/Alc1"
-        app:layout_constraintHorizontal_bias="0.501"/>
+        app:layout_constraintTop_toBottomOf="@+id/Alc1"/>
 
     <Button
         android:id="@+id/Calculate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
+        android:layout_marginEnd="15dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="15dp"
+        android:layout_marginStart="16dp"
         android:onClick="calculate"
         android:text="@string/show"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="15dp"/>
+        app:layout_constraintRight_toRightOf="parent"/>
 
 </android.support.constraint.ConstraintLayout>
