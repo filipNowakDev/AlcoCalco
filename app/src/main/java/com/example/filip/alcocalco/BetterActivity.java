@@ -1,6 +1,7 @@
 package com.example.filip.alcocalco;
 
 import android.content.Intent;
+import android.icu.text.NumberFormat;
 import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +9,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Locale;
 
 //alcohol comparison
 
@@ -38,15 +41,39 @@ public class BetterActivity extends AppCompatActivity
         double alcov1 = 0;
         double alcov2 = 0;
         boolean err = false;
-
+        String buf;
+        NumberConverter conv = new NumberConverter("", 0);
         try
         {
-            prc1 = Double.parseDouble(price1.getText().toString());
-            prc2 = Double.parseDouble(price2.getText().toString());
-            vl1 = Double.parseDouble(volume1.getText().toString());
-            vl2 = Double.parseDouble(volume2.getText().toString());
-            alcov1 = Double.parseDouble(alcv1.getText().toString());
-            alcov2 = Double.parseDouble(alcv2.getText().toString());
+            buf = price1.getText().toString();
+            conv.setBuffer(buf);
+            buf = conv.getBuffer();
+            prc1 = Double.parseDouble(buf);
+
+            buf = price2.getText().toString();
+            conv.setBuffer(buf);
+            buf = conv.getBuffer();
+            prc2 = Double.parseDouble(buf);
+
+            buf = volume1.getText().toString();
+            conv.setBuffer(buf);
+            buf = conv.getBuffer();
+            vl1 = Double.parseDouble(buf);
+
+            buf = volume2.getText().toString();
+            conv.setBuffer(buf);
+            buf = conv.getBuffer();
+            vl2 = Double.parseDouble(buf);
+
+            buf = alcv1.getText().toString();
+            conv.setBuffer(buf);
+            buf = conv.getBuffer();
+            alcov1 = Double.parseDouble(buf);
+
+            buf = alcv2.getText().toString();
+            conv.setBuffer(buf);
+            buf = conv.getBuffer();
+            alcov2 = Double.parseDouble(buf);
 
         }
         catch(Exception ex)
