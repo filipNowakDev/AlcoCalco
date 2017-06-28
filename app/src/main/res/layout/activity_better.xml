@@ -54,7 +54,7 @@
         android:layout_marginRight="16dp"
         app:layout_constraintRight_toRightOf="parent"/>
     <TextView
-        android:text="Price"
+        android:text="@string/price_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBaseline_toBaselineOf="@+id/Price1"
@@ -65,7 +65,7 @@
         android:layout_marginRight="16dp"/>
     <TextView
         android:id="@+id/volumelabel"
-        android:text="Volume"
+        android:text="@string/volume_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBaseline_toBaselineOf="@+id/Volume1"
@@ -74,7 +74,7 @@
         app:layout_constraintRight_toLeftOf="@+id/Volume1"
         android:layout_marginRight="16dp"/>
     <TextView
-        android:text="Alcohol %"
+        android:text="@string/alc_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/alcid"
@@ -93,7 +93,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:autoSizeTextType="uniform"
-        android:text="Which is Better?"
+        android:text="@string/better"
         android:textAlignment="center"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/Calculate"
@@ -113,7 +113,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="15dp"
         android:onClick="calculate"
-        android:text="Show me!"
+        android:text="@string/show"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

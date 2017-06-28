@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">AlcoCalco</string>
+    <string name="price_label">Price</string>
+    <string name="volume_label">Volume</string>
+    <string name="alc_label">Alcohol %</string>
+    <string name="invalid_input">Invalid input!</string>
+    <string name="first_choice">First is better!</string>
+    <string name="second_choice">Second is better!</string>
+    <string name="equal">Equal ;)</string>
+    <string name="better">Which is better?</string>
+    <string name="show">Show me!</string>
 </resources>

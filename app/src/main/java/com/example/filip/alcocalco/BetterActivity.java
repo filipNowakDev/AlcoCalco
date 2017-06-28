@@ -1,6 +1,7 @@
 package com.example.filip.alcocalco;
 
 import android.content.Intent;
+import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -51,7 +52,7 @@ public class BetterActivity extends AppCompatActivity
         catch(Exception ex)
         {
             //Toast.makeText(getApplicationContext(), "Invalid input!", Toast.LENGTH_SHORT).show();
-            result.setText("Invalid input!");
+            result.setText(R.string.invalid_input);
             err = true;
         }
         AlcoType alc1 = new AlcoType(prc1, vl1, alcov1);
@@ -60,11 +61,11 @@ public class BetterActivity extends AppCompatActivity
         if(!err)
         {
             if(alc1.getPpv() > alc2.getPpv())
-                result.setText("Second is better!");
+                result.setText(R.string.second_choice);
             else if(alc2.getPpv() > alc1.getPpv())
-                result.setText("First is better!");
+                result.setText(R.string.first_choice);
             else
-                result.setText("Equal");
+                result.setText(R.string.equal);
         }
 
 
