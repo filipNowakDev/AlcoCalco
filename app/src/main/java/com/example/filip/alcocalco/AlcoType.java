@@ -8,9 +8,9 @@ public class AlcoType
 {
     private double pricePerVol;
 
-    public AlcoType(double volume, double price)
+    public AlcoType(double price, double vol, double alc)
     {
-        pricePerVol = price / volume;
+        pricePerVol = price / (vol * alc);
     }
 
     public double getPpv()
