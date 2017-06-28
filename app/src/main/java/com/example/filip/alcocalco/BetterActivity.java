@@ -8,6 +8,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+//alcohol comparison
+
 public class BetterActivity extends AppCompatActivity
 {
 
