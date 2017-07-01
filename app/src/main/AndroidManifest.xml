@@ -20,7 +20,6 @@
         </activity>
         <activity
             android:name=".BetterActivity"
-            android:digits="0123456789.,"
             android:screenOrientation="portrait">
         </activity>
         <activity android:name=".PromileCalco">

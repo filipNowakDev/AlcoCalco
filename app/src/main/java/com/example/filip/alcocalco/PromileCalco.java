@@ -2,9 +2,11 @@ package com.example.filip.alcocalco;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -18,12 +20,15 @@ public class PromileCalco extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_promile_calco);
+        //ArrayAdapter<AlcoType> adapter = new ArrayAdapter<AlcoType>(this, android.R.layout.simple_list_item_1, drinkList);
+        //ListView list = (ListView) findViewById(R.id.drinkListView);
+        //list.setAdapter(adapter);
     }
 
     private List drinkList = new ArrayList<AlcoType>();
+    private double gramsSum = 0;
 
-
-    public void addDrink()
+    public void addDrink(View view)
     {
         AlcoType tempAlco = new AlcoType();
         EditText volumeEdit = (EditText) findViewById(R.id.volumeEdit);
@@ -33,27 +38,28 @@ public class PromileCalco extends AppCompatActivity
         double vol = 0;
         double perc = 0;
         boolean err = false;
-        while (!err)
+        try
         {
-            try
-            {
-                err = false;
-                converter.setBuffer(volumeEdit.getText().toString());
-                vol = Double.parseDouble(converter.getBuffer());
+            err = false;
+            converter.setBuffer(volumeEdit.getText().toString());
+            vol = Double.parseDouble(converter.getBuffer());
 
-                converter.setBuffer(percentsEdit.getText().toString());
-                perc = Double.parseDouble(converter.getBuffer());
+            converter.setBuffer(percentsEdit.getText().toString());
+            perc = Double.parseDouble(converter.getBuffer());
 
 
-            }
-            catch(Exception ex)
-            {
-                Toast.makeText(getApplicationContext(),"Invalid Input.", Toast.LENGTH_SHORT).show();
-                err = true;
-            }
+        } catch (Exception ex)
+        {
+            Toast.makeText(getApplicationContext(), "Invalid Input!", Toast.LENGTH_SHORT).show();
+            err = true;
         }
-        tempAlco.setGrams(vol, perc);
-        drinkList.add(tempAlco);
+        if (!err)
+        {
+            tempAlco.setGrams(vol, perc);
+            drinkList.add(tempAlco);
+            gramsSum += tempAlco.getGrams();
+
+        }
     }
 
 
