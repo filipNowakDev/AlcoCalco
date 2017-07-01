@@ -17,6 +17,7 @@ import static android.R.id.list;
 
 //main menu
 
+
 public class MainActivity extends AppCompatActivity
 {
 
@@ -42,12 +43,18 @@ public class MainActivity extends AppCompatActivity
                     Intent intent = new Intent(MainActivity.this, BetterActivity.class);
                     startActivity(intent);
                 }
+                if (position == 1)
+                {
+                    Intent intent = new Intent(MainActivity.this, PromileCalco.class);
+                    startActivity(intent);
+                }
 
                 if (position == 4)
                 {
                     finish();
                     System.exit(0);
                 }
+
             }
         };
         list.setOnItemClickListener(clickHandler);

@@ -9,4 +9,6 @@
     <string name="equal">Equal ;)</string>
     <string name="better">Which is better?</string>
     <string name="show">Show me!</string>
+    <string name="add">Add</string>
+    <string name="ml">ml</string>
 </resources>
