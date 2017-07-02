@@ -15,14 +15,18 @@ import java.util.List;
 public class PromileCalco extends AppCompatActivity
 {
 
+
+    ListView list;
+    AlcoAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_promile_calco);
-        //ArrayAdapter<AlcoType> adapter = new ArrayAdapter<AlcoType>(this, android.R.layout.simple_list_item_1, drinkList);
-        //ListView list = (ListView) findViewById(R.id.drinkListView);
-        //list.setAdapter(adapter);
+
+        list = (ListView) findViewById(R.id.drinkListView);
+        adapter = new AlcoAdapter(getApplicationContext(), R.layout.row_layout);
+        list.setAdapter(adapter);
     }
 
     private List drinkList = new ArrayList<AlcoType>();
@@ -57,6 +61,7 @@ public class PromileCalco extends AppCompatActivity
         {
             tempAlco.setGrams(vol, perc);
             drinkList.add(tempAlco);
+            adapter.add(tempAlco);
             gramsSum += tempAlco.getGrams();
 
         }
