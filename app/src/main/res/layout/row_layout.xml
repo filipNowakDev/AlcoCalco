@@ -72,5 +72,5 @@
         android:layout_below="@id/rowPercentsLabel"
         android:background="#FFFFFF"
         />
-</>
+</RelativeLayout>
 
