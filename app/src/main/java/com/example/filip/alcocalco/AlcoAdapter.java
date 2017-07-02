@@ -67,8 +67,19 @@ public class AlcoAdapter extends ArrayAdapter
             handler.volView = (TextView) row.findViewById(R.id.rowml);
             handler.percView = (TextView) row.findViewById(R.id.rowPercents);
             handler.gramsView = (TextView) row.findViewById(R.id.rowLabel);
-
+            row.setTag(handler);
         }
-        return super.getView(position, convertView, parent);
+
+        else
+        {
+            handler = (DataHandler) row.getTag();
+        }
+
+        AlcoType dataProvider = (AlcoType) this.getItem(position);
+        handler.volView.setText(Double.toString(dataProvider.getVolume()));
+        handler.percView.setText(Double.toString(dataProvider.getPercents()*100));
+        handler.gramsView.setText(Double.toString(dataProvider.getGrams()));
+
+        return row;
     }
 }

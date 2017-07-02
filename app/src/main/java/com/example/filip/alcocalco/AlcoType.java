@@ -36,4 +36,14 @@ public class AlcoType
     {
         return grams;
     }
+
+    public double getVolume()
+    {
+        return volume;
+    }
+
+    public double getPercents()
+    {
+        return percents;
+    }
 }
