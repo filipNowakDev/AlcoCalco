@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+              android:layout_height="70dp"
+
+                android:background="@android:color/background_dark">
+
+
+
+
+    <TextView
+        android:id="@+id/rowml"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:layout_marginLeft="16sp"
+        android:text="500"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        />
+    <TextView
+        android:id="@+id/rowmlLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:text="@string/ml"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:layout_toRightOf="@id/rowml"
+        android:textSize="24sp"/>
+    <TextView
+        android:id="@+id/rowPercents"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:layout_marginLeft="64sp"
+        android:text="40"
+        android:gravity="center"
+        android:layout_toRightOf="@+id/rowmlLabel"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"/>
+    <TextView
+
+        android:id="@+id/rowPercentsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:text="%"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:layout_toRightOf="@id/rowPercents"
+        android:textSize="24sp"/>
+
+    <TextView
+        android:id="@+id/rowLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:layout_marginLeft="64sp"
+        android:text="200"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:layout_toRightOf="@id/rowPercentsLabel"
+        android:textSize="24sp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:text="g"
+        android:gravity="center"
+        android:layout_toRightOf="@id/rowLabel"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/rowPercentsLabel"
+        android:background="#FFFFFF"
+        />
+</>
+

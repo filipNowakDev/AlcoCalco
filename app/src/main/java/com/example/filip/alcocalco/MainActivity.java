@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity
 {
 
     private String[] options = {"AlcoCalco", "PromileCalco", "AlcoMap", "Credits", "Quit"};
-
+    ListView list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, options);
-        ListView list = (ListView) findViewById(R.id.menu);
+        list = (ListView) findViewById(R.id.menu);
         list.setAdapter(adapter);
         AdapterView.OnItemClickListener clickHandler = new AdapterView.OnItemClickListener()
         {
