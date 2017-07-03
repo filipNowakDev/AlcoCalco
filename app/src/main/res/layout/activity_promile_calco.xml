@@ -68,7 +68,7 @@
     <ListView
         android:id="@+id/drinkListView"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="256dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
