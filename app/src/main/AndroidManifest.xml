@@ -24,6 +24,8 @@
         </activity>
         <activity android:name=".PromileCalco">
         </activity>
+        <activity android:name=".AlcoEditDialogActivity">
+        </activity>
     </application>
 
 </manifest>

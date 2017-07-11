@@ -3,7 +3,7 @@
                 android:layout_width="match_parent"
               android:layout_height="70dp"
 
-                android:background="@android:color/background_dark">
+                android:background="@android:color/white">
 
 
 
@@ -15,7 +15,7 @@
         android:layout_marginLeft="16sp"
         android:text="500"
         android:gravity="center"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
         android:textSize="24sp"
         />
     <TextView
@@ -24,7 +24,7 @@
         android:layout_height="64dp"
         android:text="@string/ml"
         android:gravity="center"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
         android:layout_toRightOf="@id/rowml"
         android:textSize="24sp"/>
     <TextView
@@ -35,7 +35,7 @@
         android:text="40"
         android:gravity="center"
         android:layout_toRightOf="@+id/rowmlLabel"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
         android:textSize="24sp"/>
     <TextView
 
@@ -44,7 +44,7 @@
         android:layout_height="64dp"
         android:text="%"
         android:gravity="center"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
         android:layout_toRightOf="@id/rowPercents"
         android:textSize="24sp"/>
 
@@ -55,7 +55,7 @@
         android:layout_marginLeft="64sp"
         android:text="200"
         android:gravity="center"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
         android:layout_toRightOf="@id/rowPercentsLabel"
         android:textSize="24sp"/>
     <TextView
@@ -64,13 +64,13 @@
         android:text="g"
         android:gravity="center"
         android:layout_toRightOf="@id/rowLabel"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
         android:textSize="24sp"/>
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:layout_below="@id/rowPercentsLabel"
-        android:background="#FFFFFF"
+        android:background="#000000"
         />
 </RelativeLayout>
 
