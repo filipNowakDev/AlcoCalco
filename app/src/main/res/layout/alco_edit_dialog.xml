@@ -1,74 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-
 <android.support.constraint.ConstraintLayout
-                  xmlns:android="http://schemas.android.com/apk/res/android"
-                  xmlns:app="http://schemas.android.com/apk/res-auto"
-                  xmlns:tools="http://schemas.android.com/tools"
-                  android:background="@android:color/background_light"
-                  android:layout_width="match_parent"
-                  android:layout_height="175dp">
-
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="175dp"
+    android:background="@android:color/background_light">
 
 
     <EditText
         android:id="@+id/dialogMlEdit"
         android:layout_width="128dp"
         android:layout_height="50dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginLeft="16dp"
+        android:digits="0123456789.,"
+        android:inputType="numberDecimal"
+        android:textAlignment="center"
+        app:layout_constraintBaseline_toBaselineOf="@+id/dialogMlLabel"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/dialogMlLabel"
-        app:layout_constraintBaseline_toBaselineOf="@+id/dialogMlLabel"/>
+        app:layout_constraintRight_toLeftOf="@+id/dialogMlLabel"/>
     <TextView
         android:id="@+id/dialogMlLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/ml"
-        app:layout_constraintLeft_toRightOf="@+id/dialogMlEdit"
-        app:layout_constraintRight_toLeftOf="@+id/dialogPercentsEdit"
         android:layout_marginLeft="8dp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/dialogPercentsEdit"/>
+        android:text="@string/ml"
+        app:layout_constraintBaseline_toBaselineOf="@+id/dialogPercentsEdit"
+        app:layout_constraintLeft_toRightOf="@+id/dialogMlEdit"
+        app:layout_constraintRight_toLeftOf="@+id/dialogPercentsEdit"/>
+
     <EditText
         android:id="@+id/dialogPercentsEdit"
         android:layout_width="128dp"
         android:layout_height="50dp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="5dp"
         android:layout_marginTop="24dp"
+        android:digits="0123456789.,"
+        android:inputType="numberDecimal"
+        android:textAlignment="center"
         app:layout_constraintLeft_toRightOf="@+id/dialogMlLabel"
         app:layout_constraintRight_toLeftOf="@+id/dialogPercentsLabel"
-        android:layout_marginLeft="5dp"/>
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/dialogPercentsLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="%"
-        app:layout_constraintLeft_toRightOf="@+id/dialogPercentsEdit"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
+        android:text="%"
         app:layout_constraintBaseline_toBaselineOf="@+id/dialogPercentsEdit"
-        app:layout_constraintHorizontal_bias="0.489"/>
-    <Button
-        android:id="@+id/dialogCancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/cancel"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="23dp"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintRight_toLeftOf="@+id/dialogOk"
-        app:layout_constraintLeft_toLeftOf="parent"/>
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintLeft_toRightOf="@+id/dialogPercentsEdit"
+        app:layout_constraintRight_toRightOf="parent"/>
+
     <Button
         android:id="@+id/dialogOk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/ok"
-        app:layout_constraintBaseline_toBaselineOf="@+id/dialogCancel"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        app:layout_constraintLeft_toRightOf="@+id/dialogCancel"
-        app:layout_constraintRight_toRightOf="parent"/>
+        android:layout_marginTop="8dp"
+        android:text="@string/ok"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dialogPercentsEdit"/>
 
 
 

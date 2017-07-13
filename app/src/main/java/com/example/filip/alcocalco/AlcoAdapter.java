@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,18 +27,22 @@ public class AlcoAdapter extends ArrayAdapter
         super(context, resource);
     }
 
-    static class DataHandler
-    {
-        TextView volView;
-        TextView percView;
-        TextView gramsView;
-    }
-
     @Override
     public void add(@Nullable Object object)
     {
         super.add(object);
         list.add(object);
+    }
+
+    public void add(int i, Object o)
+    {
+        list.add(i, o);
+    }
+
+    public void remove(int position)
+    {
+        super.remove(position);
+        list.remove(position);
     }
 
     @Override
@@ -51,6 +56,11 @@ public class AlcoAdapter extends ArrayAdapter
     public Object getItem(int position)
     {
         return this.list.get(position);
+    }
+
+    public void set(int position, Object object)
+    {
+        list.set(position, object);
     }
 
     @NonNull
@@ -74,12 +84,22 @@ public class AlcoAdapter extends ArrayAdapter
         {
             handler = (DataHandler) row.getTag();
         }
-
         AlcoType dataProvider = (AlcoType) this.getItem(position);
-        handler.volView.setText(Double.toString(dataProvider.getVolume()));
-        handler.percView.setText(Double.toString(dataProvider.getPercents()*100));
-        handler.gramsView.setText(Double.toString(dataProvider.getGrams()));
+
+        DecimalFormat format = new DecimalFormat("##.##");
+
+
+        handler.volView.setText(format.format(dataProvider.getVolume()));
+        handler.percView.setText(format.format(dataProvider.getPercents() * 100));
+        handler.gramsView.setText(format.format(dataProvider.getGrams()));
 
         return row;
+    }
+
+    static class DataHandler
+    {
+        TextView volView;
+        TextView percView;
+        TextView gramsView;
     }
 }

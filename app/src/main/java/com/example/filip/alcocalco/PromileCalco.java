@@ -2,22 +2,15 @@ package com.example.filip.alcocalco;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.app.Fragment;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +20,9 @@ public class PromileCalco extends Activity
 
     ListView list;
     AlcoAdapter adapter;
+    private List drinkList = new ArrayList<AlcoType>();
+    private double gramsSum = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -37,39 +33,62 @@ public class PromileCalco extends Activity
         adapter = new AlcoAdapter(getApplicationContext(), R.layout.row_layout);
         list.setAdapter(adapter);
 
-        AdapterView.OnItemClickListener clickListener = new AdapterView.OnItemClickListener()
+
+        AdapterView.OnItemClickListener clickListener = new AdapterView.OnItemClickListener() //list click opens a dialog
         {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id)
             {
 
-                //Intent intent = new Intent(getApplicationContext(), AlcoEditDialogActivity.class);
-                //startActivity(intent);
+                DecimalFormat format = new DecimalFormat("##.##");
                 final Dialog editDialog = new Dialog(PromileCalco.this);
                 editDialog.setContentView(R.layout.alco_edit_dialog);
+                final EditText mlField = editDialog.findViewById(R.id.dialogMlEdit);
+                final EditText percField = editDialog.findViewById(R.id.dialogPercentsEdit);
+                final int pos = position;
+                final AlcoType temp = (AlcoType) adapter.getItem(position);
+                mlField.setText(format.format(temp.getVolume()));
+                percField.setText(format.format(temp.getPercents() * 100));
 
-                Button cancelButton = (Button) findViewById(R.id.dialogCancel);
-                cancelButton.setOnClickListener(new View.OnClickListener() //TODO REPAIR IT
+                final Button okButton = (Button) editDialog.findViewById(R.id.dialogOk);
+
+                okButton.setOnClickListener(new View.OnClickListener()
                 {
+                    double newVolume;
+                    double newPercents;
                     @Override
                     public void onClick(View view)
                     {
+                        try
+                        {
+                            NumberConverter conv = new NumberConverter();
+                            conv.setBuffer(mlField.getText().toString());
+                            newVolume = Double.parseDouble(conv.getBuffer());
+
+                            conv.setBuffer(percField.getText().toString());
+                            newPercents = Double.parseDouble(conv.getBuffer());
+
+                        } catch (Exception ex)
+                        {
+                            Toast.makeText(getApplicationContext(), R.string.invalid_input, Toast.LENGTH_LONG).show();
+                        }
+
+                        AlcoType newDrink = new AlcoType(0, newVolume, newPercents);
+                        adapter.remove(pos);
+                        adapter.add(pos, newDrink);
                         editDialog.dismiss();
                     }
                 });
 
-                Button okButton = (Button) findViewById(R.id.dialogOk);
 
                 editDialog.show();
             }
         };
         list.setOnItemClickListener(clickListener);
+
     }
 
-    private List drinkList = new ArrayList<AlcoType>();
-    private double gramsSum = 0;
-
-    public void addDrink(View view)
+    public void addDrink(View view) //adds drink to list
     {
         AlcoType tempAlco = new AlcoType();
         EditText volumeEdit = (EditText) findViewById(R.id.volumeEdit);
