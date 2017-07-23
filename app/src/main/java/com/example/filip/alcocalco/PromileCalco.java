@@ -1,9 +1,9 @@
 package com.example.filip.alcocalco;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -12,21 +12,18 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.List;
 
 //calculates the alcohol blood content
 
-public class PromileCalco extends Activity
+public class PromileCalco extends AppCompatActivity
 {
 
 
     ListView list;
-    AlcoAdapter adapter;
-    private List drinkList; //list containing drinks
-    private double gramsSum = 0;
+    AlcoAdapter adapter; //adapter containing drinks/alcos
     private AlcoDbAdapter db; //database
     private Cursor alcoCursor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -37,17 +34,6 @@ public class PromileCalco extends Activity
 
         list = (ListView) findViewById(R.id.drinkListView);
         fillListViewData();
-
-        //adapter = new AlcoAdapter(getApplicationContext(), R.layout.row_layout);
-        //list.setAdapter(adapter);
-        //db = new AlcoDbAdapter(getApplicationContext());
-        //db.open();
-        //long count = 0;
-        //while(db.getAlco(count) != null)
-        //{
-        //    drinkList.add(db.getAlco(count));
-        //    count++;
-        //}
 
 
         AdapterView.OnItemClickListener tapListener = new AdapterView.OnItemClickListener()
@@ -82,6 +68,7 @@ public class PromileCalco extends Activity
                 {
                     double newVolume;
                     double newPercents;
+
                     @Override
                     public void onClick(View view)
                     {
@@ -113,7 +100,6 @@ public class PromileCalco extends Activity
                     public void onClick(View view)
                     {
                         adapter.remove(pos);
-                        drinkList.remove(pos);
                         db.deleteAlco(alcoId);
                         editDialog.dismiss();
                     }
@@ -160,13 +146,14 @@ public class PromileCalco extends Activity
         if (!err)
         {
             tempAlco.setGrams(vol, perc);
-            drinkList.add(tempAlco);
             adapter.add(tempAlco);
-            gramsSum += tempAlco.getGrams();
             db.insertAlco(tempAlco);
 
         }
     }
+
+
+    //database methods
 
     private void fillListViewData()
     {
@@ -179,7 +166,6 @@ public class PromileCalco extends Activity
 
     private void getAllDrinks()
     {
-        drinkList = new ArrayList<AlcoType>();
         alcoCursor = getAllEntriesFromDb();
         updateAlcoList();
     }
@@ -204,7 +190,6 @@ public class PromileCalco extends Activity
                 long id = alcoCursor.getLong(db.ID_COLUMN);
                 double volume = alcoCursor.getDouble(db.VOLUME_COLUMN);
                 double percents = alcoCursor.getDouble(db.PERCENTS_COLUMN);
-                drinkList.add(new AlcoType(id, 0, volume, percents * 100));
                 adapter.add(new AlcoType(id, 0, volume, percents * 100));
             } while (alcoCursor.moveToNext());
         }
@@ -217,7 +202,6 @@ public class PromileCalco extends Activity
             db.close();
         super.onDestroy();
     }
-
 
 
 }

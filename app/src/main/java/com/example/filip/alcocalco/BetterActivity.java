@@ -80,7 +80,7 @@ public class BetterActivity extends AppCompatActivity
         AlcoType alc1 = new AlcoType(prc1, vl1, alcov1);   //objects used for calculation
         AlcoType alc2 = new AlcoType(prc2, vl2, alcov2);
 
-        if (!err)                           //if input is valid shows better alcohol type according to price per value contained id AlcoType class objects
+        if (!err)                           //if input is valid shows better alcohol type according to price per volume contained id AlcoType class objects
         {
             if(alc1.getPpv() > alc2.getPpv())
                 result.setText(R.string.second_choice);

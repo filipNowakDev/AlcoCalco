@@ -65,7 +65,6 @@ public class AlcoDbAdapter
     public long insertAlco(AlcoType alco)
     {
         ContentValues newAlcoValues = new ContentValues();
-        //newAlcoValues.put("price", 0);
         newAlcoValues.put(KEY_VOLUME, alco.getVolume());
         newAlcoValues.put(KEY_PERCENTS, alco.getPercents());
         Log.d(DEBUG_TAG, "drink inserted");
