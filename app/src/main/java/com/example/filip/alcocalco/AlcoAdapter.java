@@ -18,42 +18,45 @@ import java.util.List;
  * Created by filip on 7/2/17.
  */
 
+//custom adapter class to contain AlcoType objects list
+
 public class AlcoAdapter extends ArrayAdapter
 {
 
-    List list = new ArrayList<>();
-    public AlcoAdapter(@NonNull Context context, @LayoutRes int resource)
+    List list = new ArrayList<>();   //base container
+
+    public AlcoAdapter(@NonNull Context context, @LayoutRes int resource)  //constructor
     {
         super(context, resource);
     }
 
     @Override
-    public void add(@Nullable Object object)
+    public void add(@Nullable Object object) //adds object to the adapter
     {
         super.add(object);
         list.add(object);
     }
 
-    public void add(int i, Object o)
+    public void add(int i, Object o)  //adds item to adapter on certain place
     {
         list.add(i, o);
     }
 
-    public void remove(int position)
+    public void remove(int position)  //removes item from certain place
     {
         super.remove(position);
         list.remove(position);
     }
 
     @Override
-    public int getCount()
+    public int getCount()   //returns size of list
     {
         return this.list.size();
     }
 
     @Nullable
     @Override
-    public Object getItem(int position)
+    public Object getItem(int position)  //returns item at certain position
     {
         return this.list.get(position);
     }
@@ -65,7 +68,7 @@ public class AlcoAdapter extends ArrayAdapter
 
     @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent)
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent)   //returns the row view at certain position
     {
         View row = convertView;
         DataHandler handler;

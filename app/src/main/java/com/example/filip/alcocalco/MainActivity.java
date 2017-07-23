@@ -1,19 +1,12 @@
 package com.example.filip.alcocalco;
 
-import android.app.ListActivity;
 import android.content.Intent;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
-
-import static android.R.attr.id;
-import static android.R.id.list;
 
 //main menu
 
@@ -21,8 +14,8 @@ import static android.R.id.list;
 public class MainActivity extends AppCompatActivity
 {
 
-    private String[] options = {"AlcoCalco", "PromileCalco", "AlcoMap", "Credits", "Quit"};
     ListView list;
+    private String[] options = {"AlcoCalco", "PromileCalco", "AlcoMap", "Credits", "Quit"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -30,10 +23,10 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, options);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, options); //simple array adapter for menu list
         list = (ListView) findViewById(R.id.menu);
-        list.setAdapter(adapter);
-        AdapterView.OnItemClickListener clickHandler = new AdapterView.OnItemClickListener()
+        list.setAdapter(adapter);                                                                               //sets the adapter in list
+        AdapterView.OnItemClickListener clickHandler = new AdapterView.OnItemClickListener()                    //listens to which item is clicked
         {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id)

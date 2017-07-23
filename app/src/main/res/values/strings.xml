@@ -13,4 +13,6 @@
     <string name="ml">ml</string>
     <string name="ok">Ok</string>
     <string name="cancel">Cancel</string>
+    <string name="hold">Hold to edit.</string>
+    <string name="delete">Delete</string>
 </resources>

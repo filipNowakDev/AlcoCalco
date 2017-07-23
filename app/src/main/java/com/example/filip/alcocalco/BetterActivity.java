@@ -1,16 +1,11 @@
 package com.example.filip.alcocalco;
 
 import android.content.Intent;
-import android.icu.text.NumberFormat;
-import android.support.annotation.StringRes;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.Locale;
 
 //alcohol comparison
 
@@ -42,8 +37,8 @@ public class BetterActivity extends AppCompatActivity
         double alcov2 = 0;
         boolean err = false;
         String buf;
-        NumberConverter conv = new NumberConverter("", 0);
-        try
+        NumberConverter conv = new NumberConverter("", 0);   // custom converter class "," >> "."
+        try                                         //trying inupt block for invalid input types
         {
             buf = price1.getText().toString();
             conv.setBuffer(buf);
@@ -82,10 +77,10 @@ public class BetterActivity extends AppCompatActivity
             result.setText(R.string.invalid_input);
             err = true;
         }
-        AlcoType alc1 = new AlcoType(prc1, vl1, alcov1);
+        AlcoType alc1 = new AlcoType(prc1, vl1, alcov1);   //objects used for calculation
         AlcoType alc2 = new AlcoType(prc2, vl2, alcov2);
 
-        if(!err)
+        if (!err)                           //if input is valid shows better alcohol type according to price per value contained id AlcoType class objects
         {
             if(alc1.getPpv() > alc2.getPpv())
                 result.setText(R.string.second_choice);
