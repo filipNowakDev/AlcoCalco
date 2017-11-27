@@ -83,4 +83,60 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/percentsEdit"/>
 
+    <TextView
+        android:id="@+id/timeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/timeLabel"
+        app:layout_constraintBottom_toTopOf="@+id/drinkListClearButton"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/drinkListView"/>
+
+    <EditText
+        android:id="@+id/timeEdit"
+        android:layout_width="64dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="16dp"
+        android:inputType="time"
+        app:layout_constraintBaseline_toBaselineOf="@+id/timeLabel"
+        app:layout_constraintLeft_toRightOf="@+id/timeLabel"/>
+
+    <TextView
+        android:id="@+id/promileResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/result"
+        app:layout_constraintBaseline_toBaselineOf="@+id/timeEdit"
+        app:layout_constraintLeft_toRightOf="@+id/timeEdit"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <Button
+        android:id="@+id/drinkListClearButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="16dp"
+        android:onClick="clearAlcos"
+        android:text="@string/clear"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/calculatePromileButton"/>
+
+    <Button
+        android:id="@+id/calculatePromileButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:onClick="calculate"
+        android:text="@string/calculate"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/drinkListClearButton"
+        app:layout_constraintRight_toRightOf="parent"/>
 </android.support.constraint.ConstraintLayout>

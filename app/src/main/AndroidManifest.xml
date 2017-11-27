@@ -22,7 +22,9 @@
             android:name=".BetterActivity"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".PromileCalco">
+        <activity
+            android:name=".PromileCalco"
+            android:windowSoftInputMode="adjustPan">
         </activity>
         <activity android:name=".AlcoEditDialogActivity">
         </activity>

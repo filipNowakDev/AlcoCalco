@@ -24,7 +24,7 @@ public class AlcoDbAdapter
     public static final String PERCENTS_OPTIONS = "REAL DEFAULT 0 ";
     public static final int PERCENTS_COLUMN = 2;
     private static final String DEBUG_TAG = "SqLiteAlcoCalco";
-    private static final int DB_VERSION = 4;
+    private static final int DB_VERSION = 6;
     private static final String DB_NAME = "PromileCalcoDatabase.db";
     private static final String DB_ALCO_TABLE = "alcoTable";
     private static final String DB_CREATE_ALCO_TABLE =
@@ -108,6 +108,11 @@ public class AlcoDbAdapter
             cursor.close();
         }
         return alco;
+    }
+
+    public void deleteAllAlcos()
+    {
+        //db.execSQL(DROP_ALCO_TABLE);
     }
 
     private static class DatabaseHelper extends SQLiteOpenHelper

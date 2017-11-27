@@ -15,4 +15,8 @@
     <string name="cancel">Cancel</string>
     <string name="hold">Hold to edit.</string>
     <string name="delete">Delete</string>
+    <string name="clear">Clear</string>
+    <string name="timeLabel">Start time:</string>
+    <string name="calculate">Calculate</string>
+    <string name="result">Result...</string>
 </resources>

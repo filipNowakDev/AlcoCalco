@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.DecimalFormat;
@@ -17,6 +18,8 @@ import java.text.DecimalFormat;
 
 public class PromileCalco extends AppCompatActivity
 {
+    private final int MALE = 0;
+    private final int FEMALE = 1;
 
 
     ListView list;
@@ -102,6 +105,10 @@ public class PromileCalco extends AppCompatActivity
                         adapter.remove(pos);
                         db.deleteAlco(alcoId);
                         editDialog.dismiss();
+                        onDestroy();//WHY?!?!
+                        onCreate(null);
+                        adapter.remove(pos);
+                        db.deleteAlco(alcoId);
                     }
                 });
 
@@ -117,6 +124,32 @@ public class PromileCalco extends AppCompatActivity
 
     }
 
+    public void clearAlcos(View view)
+    {
+        for (int i = 0; i < 2; i++) //no idea why
+        {
+            long id;
+            AlcoType tmp;
+            EditText time = (EditText) findViewById(R.id.timeEdit);
+            TextView res = (TextView) findViewById(R.id.promileResult);
+            TextView temp = (TextView) findViewById(R.id.volumeEdit);
+            temp.setText("");
+            temp = (TextView) findViewById(R.id.percentsEdit);
+            temp.setText("");
+            time.setText("");
+            res.setText(R.string.result);
+            while (adapter.getCount() > 0)
+            {
+                tmp = (AlcoType) adapter.getItem(0);
+                id = tmp.getId();
+                adapter.remove(0);
+                db.deleteAlco(id);
+            }
+            onDestroy();
+            onCreate(null);
+        }
+    }
+
     public void addDrink(View view) //adds drink to list
     {
 
@@ -124,7 +157,6 @@ public class PromileCalco extends AppCompatActivity
         EditText volumeEdit = (EditText) findViewById(R.id.volumeEdit);
         EditText percentsEdit = (EditText) findViewById(R.id.percentsEdit);
         NumberConverter converter = new NumberConverter();
-        String buffer;
         double vol = 0;
         double perc = 0;
         boolean err = false;
@@ -152,6 +184,41 @@ public class PromileCalco extends AppCompatActivity
         }
     }
 
+    public void calculate(View view)
+    {
+        double gramsSum = 0;
+        int startTime = 0;
+        int currentTime = 0;
+        TextView resultView = (TextView) findViewById(R.id.promileResult);
+        AlcoType temp = null;
+        for (int i = 0; i < adapter.getCount(); i++)
+        {
+            temp = (AlcoType) adapter.getItem(i);
+            gramsSum += temp.getGrams();
+        }
+        DecimalFormat format = new DecimalFormat("##.##");
+        resultView.setText(format.format(calculatePromiles(gramsSum, MALE, 19, 87, 180, 60 * 0)) + "promile");
+    }
+
+    private double calculatePromiles(double grams, int gender, int age, double bodyweight, double height, double timeSpent) //age in years, bodyweight in kg, height in cm, time in minutes
+    {
+        double modifier = 0;
+        double promiles = 0;
+        if (gender == MALE)
+        {
+            modifier = 0.7;
+            promiles = ((grams - (timeSpent / 60 * 0.1 * bodyweight)) / (modifier * bodyweight));
+        } else if (gender == FEMALE)
+        {
+            modifier = 0.6;
+            promiles = ((grams - (timeSpent / 60 * (0.1 * bodyweight - 1))) / (modifier * bodyweight));
+        }
+        if (promiles > 0)
+            return promiles;
+        else
+            return 0;
+    }
+
 
     //database methods
 
@@ -169,6 +236,7 @@ public class PromileCalco extends AppCompatActivity
         alcoCursor = getAllEntriesFromDb();
         updateAlcoList();
     }
+
 
     private Cursor getAllEntriesFromDb()
     {
